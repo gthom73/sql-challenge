@@ -1,0 +1,2 @@
+# sql-challenge
+KU-VIRT-DATA-PT-11-2023-U-LOLC-MWTH
