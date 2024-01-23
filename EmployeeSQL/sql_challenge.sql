@@ -81,26 +81,25 @@
 -- SELECT * FROM salaries
 
 
--- List the employee number, last name, first name, sex, and salary of each employee.
+-- -- List the employee number, last name, first name, sex, and salary of each employee.
 -- CREATE VIEW employee_listing_withSalaries AS
 -- SELECT employees.emp_no, employees.last_name, employees.first_name, employees.sex, salaries.salary
 -- FROM employees LEFT JOIN salaries
 -- ON employees.emp_no = salaries.emp_no;
 
 
--- List the first name, last name, and hire date for the employees who were hired in 1986.
+-- -- List the first name, last name, and hire date for the employees who were hired in 1986.
 -- CREATE VIEW employee_listing_with1986HireDates AS
 -- SELECT employees.first_name, employees.last_name, employees.hire_date
 -- FROM employees
 -- WHERE hire_date BETWEEN '12/31/1985' AND '01/01/1987';
 
 
--- List the manager of each department along with their department number, department name, employee number, last name, and first name.
+-- -- List the manager of each department along with their department number, department name, employee number, last name, and first name.
 -- CREATE VIEW employee_listing_byManager AS
 -- SELECT dept_manager.dept_no, dept_manager.emp_no, employees.last_name, employees.first_name
 -- FROM dept_manager LEFT JOIN employees
 -- ON dept_manager.emp_no = employees.emp_no;
-
 
 -- CREATE VIEW department_manager_listing AS
 -- SELECT departments.dept_name, employee_listing_byManager.dept_no, employee_listing_byManager.emp_no, employee_listing_byManager.last_name,
@@ -109,7 +108,7 @@
 -- ON departments.dept_no = employee_listing_byManager.dept_no;
 
 
---List the department number for each employee along with that employee’s employee number, last name, first name, and department name.
+-- --List the department number for each employee along with that employee’s employee number, last name, first name, and department name.
 -- CREATE VIEW employee_listing_byDeptartmentName AS
 -- SELECT employee_listing_bydepartment.dept_no, employee_listing_bydepartment.emp_no, employees.last_name, employees.first_name,
 -- 	employee_listing_bydepartment.dept_name
@@ -117,7 +116,7 @@
 -- ON employee_listing_bydepartment.emp_no = employees.emp_no;
 
 
--- List first name, last name, and sex of each employee whose first name is Hercules and whose last name begins with the letter B.
+-- -- List first name, last name, and sex of each employee whose first name is Hercules and whose last name begins with the letter B.
 -- CREATE VIEW hercules AS
 -- SELECT employees.first_name, employees.last_name, employees.sex
 -- FROM employees
@@ -126,10 +125,50 @@
 -- OR LEFT(employees.last_name, 1) = 'b';
 
 
--- List each employee in the Sales department, including their employee number, last name, and first name.
+-- -- List each employee in the Sales department, including their employee number, last name, and first name.
+-- CREATE VIEW employee_listing_salesDept AS
+-- SELECT * FROM employee_listing_bydepartmentname
+-- WHERE employee_listing_bydepartmentname.dept_name = 'Sales';
 
--- List each employee in the Sales and Development departments, including their employee number, last name, first name, and department name.
 
--- List the frequency counts, in descending order, of all the employee last names (that is, how many employees share each last name).
+-- -- List each employee in the Sales and Development departments, including their employee number, last name, first name, and department name.
+-- CREATE VIEW employee_listing_salesORdevelopment AS
+-- SELECT * FROM employee_listing_bydepartmentname
+-- WHERE employee_listing_bydepartmentname.dept_name = 'Sales' 
+-- OR employee_listing_bydepartmentname.dept_name = 'Development';
+
+
+-- -- List the frequency counts, in descending order, of all the employee last names (that is, how many employees share each last name).
+-- CREATE VIEW employee_listing_byrecurringLastNames AS
+-- SELECT employees.last_name, COUNT(*) AS frequency
+-- FROM employees
+-- GROUP BY employees.last_name
+-- ORDER BY frequency DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
